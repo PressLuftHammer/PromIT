@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NetServer": {
+      "commandName": "Project",
+      "commandLineArgs": "MyTest 1973"
+    }
+  }
+}
