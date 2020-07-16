@@ -14,7 +14,7 @@ namespace PromIT
             {
                 using (DBOperation db=new DBOperation(DB_NAME))
                 {
-                  
+
                     if (args.Length == 0)
                     {
                         ConsoleUtils.InputWhile((s) =>
@@ -24,32 +24,10 @@ namespace PromIT
                                 Console.WriteLine("-{0}", w);
                             }
                         });
-                        
+
                     }
                     else
-                        if (args.Length == 1)
-                        {
-                            if (args[0] == "-clear")
-                                db.Clear();
-
-                        }
-                        else
-                           if (args.Length >= 2)
-                           {
-                                switch (args[0])
-                                {
-                                    case "-create":
-                                        {
-                                            db.Create(args[1]);
-                                            break;
-                                        }
-                                    case "-update":
-                                        {
-                                            db.Update(args[1]);
-                                            break;
-                                        }
-                                }
-                            }
+                        db.Command(args);                        
 
                 }
             }

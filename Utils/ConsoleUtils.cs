@@ -18,7 +18,7 @@ namespace Utils
         {
             string s = string.Empty;
             //Ожидает ввода пользователя пока пользователь не введет пустую строку
-            while (!string.IsNullOrEmpty(s = Console.ReadLine()))
+            while (!string.IsNullOrEmpty(s = Console.ReadLine().Trim()))
             {
                 userInput(s);
             } 

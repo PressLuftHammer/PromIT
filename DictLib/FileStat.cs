@@ -13,7 +13,7 @@ namespace DictLib
     class FileStat
     {
         //разделители слов
-        private static char[] Delimiters = new char[] { ' ', '.', ',', ':', '!', '?', ';', '\n', '\t', '\r','-','"','«','»','\'' };
+        private static char[] Delimiters = new char[] { ' ', '.', ',', ':', '!', '?', ';', '\n', '\t', '\r','-','"','«','»','\'','-' };
   
         /// <summary>
         /// Извлечение слов из теста и их повторов с учетом заданых ограничений
@@ -21,20 +21,19 @@ namespace DictLib
         /// <param name="text"></param>
         /// <returns></returns>
         private static IEnumerable<DictElement> FreqCalculate(string text)
-        {
-            //разбиение на слова с учетом ограничений по длинне   
-            var words = text.ToLower()
-                           .Split(Delimiters, StringSplitOptions.RemoveEmptyEntries)
-                           .Where(a => a.Length >= Settings.MIN_WORD_LEN && a.Length <= Settings.MAX_WORD_LEN);
-
+        {           
+            //разбиение на слова с учетом ограничений по длинне  
             //получение количества повторов слов с отбрасыванием тех у которых число вхождений менее  MIN_FREQ_WORD
-            return words.GroupBy(x => x)
-                        .Select(g => new DictElement
-                        {
-                            Word = g.Key,
-                            Count = g.Count()
-                        })
-                        .Where(d => d.Count >= Settings.MIN_FREQ_WORD);
+              return   text.ToLower()
+                           .Split(Delimiters, StringSplitOptions.RemoveEmptyEntries)
+                           .Where(a => a.Length >= Settings.MIN_WORD_LEN && a.Length <= Settings.MAX_WORD_LEN)
+                           .GroupBy(x => x)
+                           .Select(g => new DictElement
+                            {
+                                Word = g.Key,
+                                Count = g.Count()
+                            })
+                           .Where(d => d.Count >= Settings.MIN_FREQ_WORD);
         }
 
         /// <summary>

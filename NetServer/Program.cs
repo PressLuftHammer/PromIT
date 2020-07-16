@@ -16,49 +16,18 @@ namespace NetServer
                     {
                         string[] cmds = s.Trim()
                                          .Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
-                        string result_oper;
                         try
                         {
-                            switch (cmds[0])
+                            using (DBOperation db = new DBOperation(args[0]))
                             {
-                                case "create":
-                                    if (cmds.Length >= 2)
-                                    {
-                                        using (DBOperation db = new DBOperation(args[0]))
-                                            db.Create(cmds[1]);
-
-                                        result_oper = "Словарь создан";
-                                    }
-                                    else
-                                        result_oper = "Незадано имя фалйа";
-                                    break;
-                                case "update":
-                                    if (cmds.Length >= 2)
-                                    {
-                                        using (DBOperation db = new DBOperation(args[0]))
-                                            db.Update(cmds[1]);
-
-                                        result_oper = "Словарь обновлен";
-                                    }
-                                    else
-                                        result_oper = "Незадано имя фалйа";
-                                    break;
-                                case "clear":
-                                    using (DBOperation db = new DBOperation(args[0]))
-                                        db.Clear();
-                                    result_oper = "Словарь очищен";
-                                    break;
-
-                                default:
-                                    result_oper = "Неизвестная комманда";
-                                    break;
-                            }
+                                db.Command(cmds);
+                                Console.WriteLine(string.Format("Комманда '{0}' выполнена",cmds[0]));     
+                            }                           
                         }
                         catch (Exception ex)
                         {
-                            result_oper = ex.Message;
+                            Console.WriteLine(ex.Message);
                         }
-                        Console.WriteLine(result_oper);
                     });
                 }
             }

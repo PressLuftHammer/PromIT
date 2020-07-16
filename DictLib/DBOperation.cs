@@ -79,6 +79,51 @@ namespace DictLib
             _Update(FileStat.GetFileStat(filename));
         }
 
+
+        /// <summary>
+        /// Выполняется комманда с задаными параметрами
+        /// </summary>
+        /// <param name="cmds">параметры</param>
+        public void Command(string[] cmds)
+        {
+            if (cmds.Length > 0)
+            {
+                switch (cmds[0])
+                {
+                    case "create":
+                        if (cmds.Length >= 2)
+                        {
+                            Create(cmds[1]);
+                        }
+                        else
+                            throw new Exception("Не задано имя файла!");
+                        break;
+
+                    case "update":
+                        if (cmds.Length >= 2)
+                        {
+                            Update(cmds[1]);
+                        }
+                        else
+                            throw new Exception("Не задано имя файла!");
+
+                        break;
+
+
+                    case "clear":
+                        Clear();
+                        break;
+
+                    default:
+                        throw new Exception(string.Format("Неизвестная комманда '{0}'", cmds[0]));
+                }
+
+            }
+
+        
+
+        }
+
         /// <summary>
         /// Получение слов атодополнения
         /// </summary>

@@ -1,7 +1,8 @@
 {
   "profiles": {
     "PromIT": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "update Uncle_Tom.txt"
     }
   }
 }
