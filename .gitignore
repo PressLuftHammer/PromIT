@@ -1105,3 +1105,4 @@ NetServer/obj/Release/netcoreapp2.1/win10-x64/NetServer.csproj.FileListAbsolute.
 NetServer/obj/Release/netcoreapp2.1/win10-x64/NetServer.csprojAssemblyReference.cache
 NetServer/obj/Release/netcoreapp2.1/win10-x64/NetServer.dll
 NetServer/obj/Release/netcoreapp2.1/win10-x64/NetServer.pdb
+DictLib/obj/Debug/netcoreapp2.1/DictLib.csprojAssemblyReference.cache

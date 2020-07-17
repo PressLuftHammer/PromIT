@@ -9,7 +9,6 @@ namespace Utils
     {
         public delegate void UserInput(string text);
 
-
         /// <summary>
         /// Цикл обработки ввода пользователя
         /// </summary>
@@ -18,7 +17,7 @@ namespace Utils
         {
             string s = string.Empty;
             //Ожидает ввода пользователя пока пользователь не введет пустую строку
-            while (!string.IsNullOrEmpty(s = Console.ReadLine().Trim()))
+            while (!string.IsNullOrWhiteSpace(s = Console.ReadLine()))
             {
                 userInput(s);
             } 
